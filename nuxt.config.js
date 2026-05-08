@@ -3,11 +3,7 @@ import path from 'path';
 
 const baseUrl = '/';
 
-const alias = {
-    primevue: path.resolve(__dirname, '../../packages/primevue/src'),
-    '@primevue/core': path.resolve(__dirname, '../../packages/core/src'),
-    '@primevue/icons': path.resolve(__dirname, '../../packages/icons/src')
-};
+const alias = {};
 
 let PROCESS_ENV = {};
 
@@ -89,7 +85,7 @@ export default defineNuxtConfig({
     primevue: {
         usePrimeVue: process.env.DEV_ENV !== 'hot',
         autoImport: true, // When enabled, the module automatically imports PrimeVue components and directives used throughout the application.
-        importTheme: { from: '@/themes/app-theme.js' }
+        importTheme: { from: './themes/app-theme.js' }
     },
     app: {
         baseURL: baseUrl,
@@ -125,7 +121,7 @@ export default defineNuxtConfig({
     },
     postcss: {
         plugins: {
-            tailwindcss: {},
+            '@tailwindcss/postcss': {},
             autoprefixer: {}
         }
     },
